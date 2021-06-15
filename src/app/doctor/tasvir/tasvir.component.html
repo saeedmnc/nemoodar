@@ -1,0 +1,400 @@
+<style>
+    .headerStyle{
+        background-color: #3e61a1;
+        padding: 6px;
+        text-align: center
+
+    }
+    .titleStle{
+        color: white;
+        height: 4px;
+    }
+    tbody tr{
+        line-height: 10px!important;
+    }
+
+    .hover:hover{
+        color: orange;
+    }
+    .orangeBtn{
+        color: white!important;
+        background-color:#f2911b!important;
+        padding-top:2px!important;
+        padding-bottom: 2px
+    }
+    .example-form {
+        min-width: 150px;
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .example-full-width {
+        width: 100%;
+    }
+    .trserch{
+        background-color: #12407a;
+        text-align: center;
+        color: white;
+        font-size: 13px;
+    }
+    ul{
+        list-style: none;
+
+
+    }
+    li{
+        margin-right: 10px;
+    }
+    ul:first-child li {
+        margin: 0;
+    }
+    .orangeBtn{
+        color: white!important;
+        background-color:#f2911b!important;
+        padding-top:2px!important;
+        padding-bottom: 2px!important;
+
+    }
+    .headerStyle{
+        background-color: #3e61a1;
+        padding: 6px;
+        text-align: center
+
+    }
+    .titleStle{
+        color: white;height: 4px
+    }
+    bs-tooltip-container{
+        display: none !important;
+    }
+
+
+
+</style>
+
+<div class="container-fluid" style="direction: ltr!important;">
+    <div style="border: 1px solid;padding: 0;margin-top: 4px;direction: rtl" >
+        <div class="col-12  headerStyle" style="text-align: right;padding: 11px">
+            <h5  style="font-weight: 400;" class="titleStle"  >  <i class="ft-repeat"></i> &nbsp;گزارشات/مالی </h5>
+        </div>
+        <br >
+        <div class="col-12"  >
+            <form action="" [formGroup]="signupForm" (ngSubmit)="onSubmit()" >
+                <div class="col-12  " style="text-align: right;margin: 0 auto;padding: 0;">
+                    <div  class="col-12 headerStyle" style="height: 35px;background-color: #4667a8;text-align: right;padding-top: 4px;color: white">
+                        انتخاب بازه زمانی :
+                    </div>
+                    <div class="col-12" style="display: flex;flex-wrap: wrap;padding: 0px">
+                        <div class="col-lg-12 col-sm-12 col-md-12 d-flex" style="flex-wrap: wrap">
+
+                            <div class="col-lg-4 col-sm-12 col-md-12 mt-1" style="text-align: right!important;">
+
+                                <label for="" class="ml-2"> از تاریخ: </label>
+                                <dp-date-picker
+                                        dir="rtl"
+                                        mode="day"
+                                        formControlName="fromDate"
+                                        [(ngModel)]="dateObject1"
+                                        placeholder="تاریخ"
+                                        theme="dp-material">
+                                </dp-date-picker>
+
+                            </div>
+                            <div class="col-lg-4 col-sm-12 col-md-12  mt-1" style="text-align: right!important;">
+
+                                <label for="" class="ml-2"> تا تاریخ: </label>
+                                <dp-date-picker
+                                        dir="rtl"
+                                        mode="day"
+                                        [(ngModel)]="dateObject"
+                                        formControlName="toDate"
+                                        placeholder="تاریخ"
+
+                                        theme="dp-material">
+                                </dp-date-picker>
+
+
+                            </div>
+                            <div class="col-lg-4 d-flex col-sm-12 col-md-12  mt-1" style="text-align: right!important;">
+
+                                <label for="" class="ml-2 mt-1">  بیمارستان  </label>
+                                <select (change)="getHospitalID($event)"  name="" id="" class="form-control" [disabled]="signupForm.status==='INVALID'"   >
+                                    <option value="">انتخاب کنید </option>
+                                    <option value="{{i['hospitalID']}}" *ngFor="let i of result_hospital_info"> {{i['hospitalName']}}</option>
+                                </select>
+
+
+                            </div>
+
+                            <!--                                    <div class="col-lg-4 col-sm-12 col-md-12  mt-1" style="text-align: left !important">-->
+
+                            <!--                        <label for="" class="ml-2">انتخاب تمامی مراکز: </label>-->
+                            <!--                                        <mat-checkbox class="example-margin">-->
+                            <!--&lt;!&ndash;                                                      [checked]=""&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                                      [color]="task.color"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                                      [indeterminate]="someComplete()"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                                      (change)="setAll($event.checked)">&ndash;&gt;-->
+
+                            <!--                                        </mat-checkbox>-->
+
+
+                            <!--                    </div>-->
+                        </div>
+                        <div class="col-12 d-flex mt-1">
+                            <div class="col-lg-4 col-sm-12 d-flex ">
+                                <div class="col-3" style="padding: 0">
+                                    <label for="" class="ml-2 mt-1">  نوع مراجعه  </label>
+
+                                </div>
+                                <div class="col-6" style="padding: 0">
+                                    <select name="" id="" class="form-control" (change)="getEnconterTypeValue($event)">
+                                        <option value="" >انتخاب کنید</option>
+                                        <option value="{{i.encounterTypeID}}" *ngFor="let i of EncounterTypeList">{{i.encounterType}} </option>
+                                    </select>
+                                </div>
+
+
+                            </div>
+                            <div class="col-lg-4  d-flex ">
+                                <div class="col-3" style="padding: 0">
+                                    <label for="" class="ml-2 mt-1">  نوع گلوبال   </label>
+
+                                </div>
+                                <div class="col-6" style="padding: 0">
+                                    <select name="" id="" class="form-control" (change)="getEncounterGlobalType($event)">
+                                        <option value="" >انتخاب کنید</option>
+                                        <option value="{{i.encounterGlobalTypeID}}" *ngFor="let i of EncounterGlobalTypeList">{{i.encounterGlobalType}} </option>
+                                    </select>
+                                </div>
+
+
+                            </div>
+                            <div class="col-lg-4 d-flex justify-content-center" >
+                                <button class="btn btn-primary " [disabled]="searchValid===false"(click)="ok()" style="color: white!important;background-color: #4667a8">جستجو کنید </button>
+
+                            </div>
+
+
+
+                        </div>
+
+                    </div>
+                </div>
+            </form>
+
+            <div class="col-12  " style="text-align: right;margin: 0 auto;padding: 0;">
+                <div  class="col-12 headerStyle" style="height: 35px;background-color: #4667a8;text-align: right;padding-top: 4px;color: white">
+               مشاهده نتایج
+                </div>
+
+            </div>
+            <div  class="col-12" style="display: flex" id="print-section">
+                <div class="col-2" style="padding: 0">
+
+                </div>
+
+                <div class="col-5" style="padding: 6px;display: flex;flex-wrap: wrap" >
+                    <div class="col-12" style="display: block;margin: 0 auto">
+                        <!--<canvas baseChart-->
+                                <!--[chartType]="chartType"-->
+                                <!--[datasets]="chartDatasets"-->
+                                <!--[colors]="chartColors"-->
+                                <!--[options]="chartOptions"-->
+                                <!--(chartClick)="chartClicked($event)"-->
+                        <!--&gt;-->
+                        <!--</canvas>-->
+                        <canvas baseChart width="400" height="400"
+                                [datasets]="chartDatasets"
+                                [labels]="chartLabels"
+                                [colors]="lineChartColors"
+                                [legend]="lineChartLegend"
+                                [chartType]="chartType"
+                                [plugins]="lineChartPlugins">
+                        </canvas>
+
+                    </div>
+                </div>
+                <div class="col-5" style="padding: 6px;display: flex;flex-wrap: wrap" >
+                    <div  class="col-12" style="height: 35px;background-color: #4667a8;text-align: center;padding-top: 4px;color: white">
+                       لیست شاخص ها و نتایج
+                    </div>
+                    <div class="col-12  "  >
+                        <div class="d-flex">
+                            <div  class="col-6 d-flex" style="text-align: right" >
+                                <ul class="">
+                                    <li class="d-flex">
+                                        <div  style="width: 10px;height: 10px;background-color: #F7464A;border-radius: 50%;margin-left: 7px;margin-top: 7px"></div>
+
+                                      کسورات بیمه
+                                    </li>
+                                    <li  class="d-flex" >
+                                        <div  style="width: 10px;height: 10px;background-color: #46BFBD;border-radius: 50%;margin-left: 7px;margin-top: 7px"></div>
+
+
+                                        مبلغ خارج از بیمه
+                                    </li>
+                                    <li  class="d-flex" >
+                                        <div  style="width: 10px;height: 10px;background-color: #FDB45C;border-radius: 50%;margin-left: 7px;margin-top: 7px"></div>
+
+
+                                        مبلغ غیر  بیمه
+                                    </li> <li  class="d-flex" >
+                                    <div  style="width: 10px;height: 10px;background-color: #5e35b1;border-radius: 50%;margin-left: 7px;margin-top: 7px"></div>
+
+                                         مانده بیمار
+                                    </li> <li  class="d-flex" >
+                                    <div  style="width: 10px;height: 10px;background-color: blue;border-radius: 50%;margin-left: 7px;margin-top: 7px"></div>
+
+                                         سهم بیمار
+                                    </li> <li   class="d-flex">
+                                    <div  style="width: 10px;height: 10px;background-color: green;border-radius: 50%;margin-left: 7px;margin-top: 7px"></div>
+                                    سهم بیمه مکمل
+                                    </li> <li  class="d-flex" >
+                                    <div  style="width: 10px;height: 10px;background-color: yellow;border-radius: 50%;margin-left: 7px;margin-top: 7px"></div>
+                                    سهم بیمه
+
+                                    </li> <li  class="d-flex" >
+                                    <div  style="width: 10px;height: 10px;background-color: gray;border-radius: 50%;margin-left: 7px;margin-top: 7px"></div>
+
+                                                    مبلغ پرداختی بیمه
+                                    </li> <li  class="d-flex" >
+                                    <div  style="width: 10px;height: 10px;background-color: black;border-radius: 50%;margin-left: 7px;margin-top: 7px"></div>
+
+                                                            سهم سازمانهای حمایتی
+                                    </li> <li  class="d-flex" >
+                                    <div  style="width: 10px;height: 10px;background-color: orange;border-radius: 50%;margin-left: 7px;margin-top: 7px"></div>
+
+                                         جمع تخفیفات
+                                    </li> <li  class="d-flex" >
+                                    <div  style="width: 10px;height: 10px;background-color: pink;border-radius: 50%;margin-left: 7px;margin-top: 7px"></div>
+
+                                       سهم یارانه دولت
+                                    </li>
+
+                                </ul>
+                            </div>
+                            <div class="col-6" style="text-align: right;float: left" >
+                                <ul>
+
+                                    <li *ngFor="let i of chartDatasets[0]['data']">{{i | irc}}
+
+                                    </li>
+                                </ul>
+                            </div>
+                        </div>
+                        <hr>
+                        <div class="col-12 d-flex" style="text-align: right">
+                            <div class="col-6" >
+                                مجموع کل :
+                            </div>
+                            <div class="col-6">
+                                 {{mablagheKoleMoraje}}ریال
+                            </div>
+
+
+                        </div>
+
+
+
+
+
+                    </div>
+
+
+                </div>
+
+
+            </div>
+            <div class="col-12 d-flex ">
+                <div class="col-2" style="padding: 0">
+
+                </div>
+                <div class="col-5" style="padding: 6px;display: flex;flex-wrap: wrap" >
+
+                    <div class="col-12" style="display: block;margin: 0 auto">
+
+                        <canvas baseChart width="400" height="400"
+                                [datasets]="chartDatasets"
+                                [labels]="chartLabels"
+                                [colors]="chartColors3"
+                                [legend]="lineChartLegend"
+                                [chartType]="barChartType"
+                                [plugins]="lineChartPlugins">
+                        </canvas>
+
+                    </div>
+                </div>
+                <div class="col-5" style="padding: 6px;display: flex;flex-wrap: wrap" >
+
+                    <div class="col-12" style="display: block;margin: 0 auto">
+                        <canvas baseChart width="400" height="400"
+                                [datasets]="chartDatasets"
+                                [labels]="chartLabels"
+                                [colors]="chartColors3"
+                                [legend]="lineChartLegend"
+                                [chartType]="doughnutChartType"
+                                [plugins]="lineChartPlugins">
+                        </canvas>
+
+                        <!--<canvas baseChart width="400" height="400"-->
+                                <!--[datasets]="chartDatasets"-->
+                                <!--[labels]="chartLabels"-->
+                                <!--[colors]="chartColors3"-->
+                                <!--[legend]="lineChartLegend"-->
+                                <!--[chartType]="polarAreaChartType"-->
+                                <!--[plugins]="lineChartPlugins">-->
+                        <!--</canvas>-->
+
+                    </div>
+                </div>
+            </div>
+
+
+
+
+        </div>
+
+
+    </div>
+    <div class="col-12" style="margin: 0 auto;display: flex;background-color: #637dc270;text-align: right;padding-top: 5px;direction: rtl;margin-top: 7px">
+        <button [disabled]="validPrint===false" type="button" class="btn btn-soundcloud" (click)="exportToExcel()">
+            <i class="ft-download-cloud"></i> خروجی اکسل
+        </button>
+        <button [disabled]="validPrint===false" printSectionId="print-section"  [useExistingCss]="true"  [printStyle]= "{div: {'direction' : 'rtl'},table:{'direction':'rtl'}}"  printTitle="MyTitle " ngxPrint type="button" class="btn btn-soundcloud">
+            <i class="ft-printer"></i> چاپ گزارش
+        </button>
+    </div>
+</div>
+<div *ngIf="loading" class="col-12" style="text-align: center;margin-top: -15%">
+    <img src="assets/img/flags/760.gif" />
+</div>
+
+
+
+
+
+
+
+<!--<div class="container-fluid">-->
+<!--    <div class="row" style="margin-top: 10px">-->
+<!--         <div class="col-12" style="height: 130px;background-color: #0B486B">-->
+
+<!--         </div>-->
+<!--    </div>-->
+<!--    <div class="row">-->
+<!--        <div class="col-4" style="display: block;margin: 0 auto">-->
+<!--            <canvas baseChart-->
+<!--                    [chartType]="chartType"-->
+<!--                    [datasets]="chartDatasets"-->
+<!--                    [labels]="chartLabels"-->
+<!--                    [colors]="chartColors"-->
+<!--                    [options]="chartOptions"-->
+<!--                    [legend]="true"-->
+<!--                    (chartHover)="chartHovered($event)"-->
+<!--                    (chartClick)="chartClicked($event)"-->
+
+<!--            >-->
+<!--            </canvas>-->
+<!--        </div>-->
+<!--    </div>-->
+<!--</div>-->

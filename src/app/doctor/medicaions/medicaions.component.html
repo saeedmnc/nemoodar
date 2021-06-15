@@ -1,0 +1,53 @@
+
+<style>
+    canvas:hover{
+        background-color: transparent !important;
+    }
+    .gg{
+        
+    }
+</style>
+
+
+<div class="container-fluid">
+    <div class="row"  style="margin-top: 10px">
+<!--        <div class="col-3">-->
+<!--            <div  class="col-12" style="height: 35px;background-color: #4667a8;text-align: center;padding-top: 4px;color: white">-->
+<!--                وضعیت تخت ها به تفکیک بیمارستان-->
+<!--            </div>-->
+<!--            <div class="col-12" style="padding: 0px">-->
+<!--                <div *ngFor="let i of result_hospital_info" class="col-11" style="background-color: transparent;height: 40px;border: 1px solid;display: flex;margin: 3px;padding: 0">-->
+<!--                    <div class="col-2" style="padding: 0;padding-top: 10px;border-left: 1px solid">-->
+<!--                        <mat-radio-button value="{{i['hospitalID']}}" (change)="set_data(i['hospitalID'])">-->
+
+<!--                        </mat-radio-button>-->
+<!--                    </div>-->
+<!--                    <div class="col-10" style="padding: 0;padding-top: 10px;font-size: 12px;background-color: orange;color: white;text-align: right">-->
+<!--                        {{i['hospitalName']}}-->
+<!--                    </div>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--        </div>-->
+        <div class="col-12" >
+            <div  class="col-12" style="height: 35px;background-color: #4667a8;text-align: center;padding-top: 4px;color: white">
+              مشاهده وضعیت تختهای بیمارستان به صورت نموداری
+            </div>
+            <canvas class="gg" baseChart
+                    [datasets]="barChartData"
+                    [labels]="barChartLabels"
+                    [options]="barChartOptions"
+                    [plugins]="barChartPlugins"
+                    [legend]="barChartLegend"
+                    [chartType]="barChartType"
+                    (chartClick)="chartClicked($event)">
+
+
+            >
+
+            </canvas>
+        </div>
+
+
+    </div>
+</div>
+

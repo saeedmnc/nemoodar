@@ -1,0 +1,242 @@
+<style>
+    .headerStyle{
+        background-color: #3e61a1;
+        padding: 6px;
+        text-align: center
+
+    }
+    .titleStle{
+        color: white;
+        height: 4px;
+    }
+    tbody tr{
+        line-height: 10px!important;
+    }
+
+    .hover:hover{
+        color: orange;
+    }
+    .orangeBtn{
+        color: white!important;
+        background-color:#f2911b!important;
+        padding-top:2px!important;
+        padding-bottom: 2px
+    }
+    .example-form {
+        min-width: 150px;
+        max-width: 400px;
+        width: 100%;
+    }
+
+    .example-full-width {
+        width: 100%;
+    }
+    .trserch{
+        background-color: #12407a;
+        text-align: center;
+        color: white;
+        font-size: 13px;
+    }
+    ul{
+        list-style: none;
+
+
+    }
+    li{
+        margin-right: 10px;
+    }
+    ul:first-child li {
+        margin: 0;
+    }
+    .orangeBtn{
+        color: white!important;
+        background-color:#f2911b!important;
+        padding-top:2px!important;
+        padding-bottom: 2px!important;
+
+    }
+    .headerStyle{
+        background-color: #3e61a1;
+        padding: 6px;
+        text-align: center
+
+    }
+    .titleStle{
+        color: white;height: 4px
+    }
+
+
+
+</style>
+
+    <div class="container-fluid" style="direction: ltr!important;">
+
+
+
+        <div style="border: 1px solid;padding: 0;margin-top: 4px;direction: rtl" id="print-section">
+            <div class="col-12  headerStyle" style="text-align: right;padding: 11px">
+                <h5  style="font-weight: 400;" class="titleStle"  >  <i class="ft-repeat"></i> &nbsp;گزارشات/شاخص/ده داروی گران قیمت </h5>
+            </div>
+<br >
+            <div class="col-12"  >
+                <div class="col-12  " style="text-align: right;margin: 0 auto;padding: 0;">
+                    <div  class="col-12 headerStyle" style="height: 35px;background-color: #4667a8;text-align: right;padding-top: 4px;color: white">
+                        انتخاب بازه زمانی :
+                    </div>
+                    <div class="col-12" style="display: flex;flex-wrap: wrap;padding: 0px">
+                        <div class="col-lg-12 col-sm-12 col-md-12 d-flex" style="flex-wrap: wrap">
+
+                            <div class="col-lg-4 col-sm-12 col-md-12 mt-1" style="text-align: right!important;">
+
+                                <label for="" class="ml-2"> از تاریخ: </label>
+                                <dp-date-picker
+                                        dir="rtl"
+                                        mode="day"
+                                        [(ngModel)]="dateObject1"
+                                        name="StartDate"
+                                        (onChange)="set_val($event)"
+                                        placeholder="تاریخ"
+                                        theme="dp-material">
+                                </dp-date-picker>
+
+                            </div>
+                            <div class="col-lg-4 col-sm-12 col-md-12  mt-1" style="text-align: right!important;">
+
+                                <label for="" class="ml-2"> تا تاریخ: </label>
+                                <dp-date-picker
+                                        dir="rtl"
+                                        mode="day"
+                                        [(ngModel)]="dateObject"
+                                        name="EndDate"
+                                        (onChange)="set_val_end($event)"
+                                        placeholder="تاریخ"
+                                        theme="dp-material">
+                                </dp-date-picker>
+
+
+                            </div>
+                            <!--                                    <div class="col-lg-4 col-sm-12 col-md-12  mt-1" style="text-align: left !important">-->
+
+                            <!--                        <label for="" class="ml-2">انتخاب تمامی مراکز: </label>-->
+                            <!--                                        <mat-checkbox class="example-margin">-->
+                            <!--&lt;!&ndash;                                                      [checked]=""&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                                      [color]="task.color"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                                      [indeterminate]="someComplete()"&ndash;&gt;-->
+                            <!--&lt;!&ndash;                                                      (change)="setAll($event.checked)">&ndash;&gt;-->
+
+                            <!--                                        </mat-checkbox>-->
+
+
+                            <!--                    </div>-->
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12  " style="text-align: right;margin: 0 auto;padding: 0;">
+                    <div  class="col-12 headerStyle" style="height: 35px;background-color: #4667a8;text-align: right;padding-top: 4px;color: white">
+                       فیلتر بر اساس بیمارستان
+                    </div>
+                    <div class="col-12" style="display: flex;flex-wrap: wrap;padding: 0px">
+                        <div *ngFor="let i of result_hospital_info" class="col-2" style="background-color: transparent;height: 40px;border: 1px solid;display: flex;margin: 3px;padding: 0">
+                             <div class="col-2" style="padding: 0;padding-top: 10px;border-left: 1px solid">
+                                 <mat-radio-button value="{{i['hospitalID']}}" (change)="set_data(i['hospitalID'])">
+
+                                 </mat-radio-button>
+                             </div>
+                            <div class="col-10" style="padding: 0;padding-top: 10px;font-size: 12px;background-color: orange;color: white">
+                              {{i['hospitalName']}}
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12" style="display: flex" >
+                    <div class="col-8" style="padding: 6px;display: flex;flex-wrap: wrap" >
+                        <div  class="col-12" style="height: 35px;background-color: #4667a8;text-align: center;padding-top: 4px;color: white">
+                            نتایج به صورت آماری
+                        </div>
+
+                        <table style="direction: rtl;text-align: center;" class="table table-bordered table-hover">
+                            <tr style="background-color: #c7850b">
+                                <th>
+                                    #
+                                </th>
+                                <th>
+                                    نام دارو
+                                </th>
+
+                                <th>
+                                    قیمت واحد
+                                </th>
+                            </tr>
+                            <tr *ngFor="let ite of droug_list_ten,let i=index">
+                                <td>
+                                    {{i+1}}
+                                </td>
+                                <td>
+                                    {{ite['name_Daroo']}}
+                                </td>
+
+                                <td>
+                                    {{ite['gheymatVahed']}}
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                    <div class="col-4" style="padding: 6px;display: flex;flex-wrap: wrap" >
+                        <div  class="col-12" style="height: 35px;background-color: #4667a8;text-align: center;padding-top: 4px;color: white">
+                            نتایج به صورت نموداری
+                        </div>
+
+                    </div>
+                </div>
+
+            </div>
+
+
+        </div>
+        <div class="col-12" style="margin: 0 auto;display: flex;background-color: #637dc270;text-align: right;padding-top: 5px;direction: rtl;margin-top: 7px">
+            <button type="button" class="btn btn-soundcloud">
+                <i class="ft-download-cloud"></i> خروجی اکسل
+            </button>
+            <button printSectionId="print-section"  [useExistingCss]="true"  [printStyle]= "{div: {'direction' : 'rtl'},table:{'direction':'rtl'}}"  printTitle="MyTitle " ngxPrint type="button" class="btn btn-soundcloud">
+                <i class="ft-printer"></i> چاپ گزارش
+            </button>
+        </div>
+
+
+
+
+<!--        <ng-template #content let-c="close" let-d="dismiss" >-->
+
+<!--            <div class="modal-body" id="kbModal-body" style="font-family: Tahoma!important;" >-->
+<!--                <div style="display: flex ;flex-wrap: wrap ">-->
+<!--                    <div *ngIf="result1"  class="col-12" style="font-size: 17px; border-color: black;display: flex;padding:0;flex-wrap: wrap ">-->
+<!--                        <div *ngFor="let item of labfav" class="col-12" style="padding: 0!important;margin: 4px">-->
+<!--                            <ul  class="d-flex  mt-2 border " style="padding: 0!important;"  >-->
+<!--                                <li style="margin-right: 5px;"><input style="width: 20px;height:20px" type="checkbox" (click)="setfav(item['res'])" /></li>-->
+<!--                                <li>|</li>-->
+<!--                                <li style="margin-right: 5px;">{{item['res']['name']}} </li>-->
+<!--                                <li>|</li>-->
+<!--                                <li  >-->
+<!--                                    <svg (click)="deletmozmen(item['id'])" xmlns="http://www.w3.org/2000/svg" width="16" height="16" style="color: #f2911b;cursor: pointer " fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">-->
+<!--                                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5zm3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0V6z"/>-->
+<!--                                        <path fill-rule="evenodd" d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1v1zM4.118 4L4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4H4.118zM2.5 3V2h11v1h-11z"/>-->
+<!--                                    </svg>-->
+<!--                                </li>-->
+<!--                            </ul>-->
+<!--                        </div>-->
+
+<!--                    </div>-->
+<!--                </div>-->
+
+<!--            </div>-->
+
+<!--        </ng-template>-->
+
+    </div>
+<div *ngIf="loading" class="col-12" style="text-align: center;margin-top: -15%">
+    <img src="assets/img/flags/760.gif" />
+</div>
+
+
+
+

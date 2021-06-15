@@ -1,0 +1,27 @@
+
+<!--<ng-select-->
+        <!--[items]="result_hospital_info"-->
+        <!--[multiple]="true"-->
+        <!--bindLabel="hospitalName"-->
+        <!--[selectableGroup]="true"-->
+        <!--[closeOnSelect]="false"-->
+        <!--bindValue="hospitalID"-->
+        <!--[(ngModel)]="selectedPeople">-->
+    <!--<ng-template ng-optgroup-tmp let-item="item" let-item$="item$" let-index="index">-->
+        <!--<input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"/> {{item.hospitalName | uppercase}}-->
+    <!--</ng-template>-->
+    <!--<ng-template ng-option-tmp let-item="item" let-item$="item$" let-index="index">-->
+        <!--<input id="item-{{index}}" type="checkbox" [ngModel]="item$.selected"/> {{item.hospitalName}}-->
+    <!--</ng-template>-->
+
+
+<!--</ng-select>-->
+<!--{{selectedPeople}}-->
+
+<br>
+
+<ul class="list-group" style="text-align: right">
+    <li *ngFor="let i of result_hospital_info" class="list-group-item"><input type="checkbox" (click)="sethospitalID(i.hospitalID)"> {{i.hospitalName}}</li>
+
+</ul>
+<button class="btn btn-primary btn-lg" (click)="set()" style="color: white!important;">ثبت</button>

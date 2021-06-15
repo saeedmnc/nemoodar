@@ -1,0 +1,93 @@
+<!--Login Page Starts-->
+<section id="login">
+  <div class="container-fluid">
+    <div class="row full-height-vh m-0">
+      <div class="col-12 d-flex align-items-center justify-content-center">
+        <div class="col-3" >
+          <div class="card-content" style="height: auto;border-bottom: 2px solid;padding: 0;width: 80%">
+
+
+                <div class="" style="display: flex;background-color: #f4f6f9;width: 100%">
+                  <app-logo-item></app-logo-item>
+              
+                </div>
+            
+          </div>
+          <div class="card-content" style="width: 80%">
+            <div class="card-body login-img">
+              <div class="row m-0">
+                <section id="doctorLogin"  *ngIf="currentPage=='doctorLogin'" style="background-color: white!important;">
+                  <div class="container" style="background-color: white">
+                    <div class="col-lg-12 col-md-12  px-4 pt-3" >
+                      <p class="card-text " style="    text-align: center;
+    font-weight: 600;">
+                         انباره داده و گزارش تجمیعی
+                      </p>
+                      <div class="alert alert-danger" role="alert" *ngIf="errorMassage">
+                        {{errorMassage}}
+                      </div>
+                      <div *ngIf="loading" style="text-align: center">
+                        <img src="assets/img/flags/760.gif">
+                      </div>
+                      <form action="" (ngSubmit)="doctorLogin($event)">
+                        <input
+                                type="text"
+                                class="form-control mb-3"
+                                placeholder="نام کاربری"
+                                name="username"
+                                required="required"
+
+                        />
+                        <input
+                                type="password"
+                                class="form-control mb-3"
+                                placeholder="رمز عبور"
+                                name="password"
+                                required="required"
+
+                        />
+                        <div class="d-flex justify-content-between ">
+                          <div class="remember-me">
+                            <div
+                                    class="custom-control custom-checkbox custom-control-inline "
+                            >
+                              <input
+                                      type="checkbox"
+                                      id="customCheckboxInline1"
+                                      name="customCheckboxInline1"
+                                      class="custom-control-input"
+                              />
+                            </div>
+                          </div>
+                        </div>
+                        <div class="fg-actions d-flex justify-content-between">
+                          <div class="recover-pass">
+                            <button class="btn btn-primary">
+                              ورود به سامانه
+                            </button>
+                          </div>
+                        </div>
+                      </form>
+
+
+                    </div>
+                    <div class="col-12 " style="text-align: left;margin: 0!important;padding: 0!important;font-size: 12px">
+                      <small>copyright 2020 |V 1.0 13991218 </small>
+                    </div>
+
+                  </div>
+                </section>
+
+
+
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</section>
+<!--Login Page Ends-->
+

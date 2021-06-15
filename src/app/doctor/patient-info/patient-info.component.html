@@ -1,0 +1,79 @@
+<!--<style>-->
+<!--    ul{-->
+<!--        list-style: none;-->
+
+
+<!--    }-->
+<!--    li{-->
+<!--        margin-right: 10px;-->
+<!--    }-->
+<!--    ul:first-child li {-->
+<!--        margin: 0;-->
+<!--    }-->
+<!--    .orangeBtn{-->
+<!--        color: white!important;-->
+<!--        background-color:#f2911b!important;-->
+<!--        padding-top:2px!important;-->
+<!--        padding-bottom: 2px-->
+
+<!--    }-->
+<!--    .headerStyle{-->
+<!--          background-color: #12407a;-->
+<!--          padding: 6px;-->
+<!--          text-align: center-->
+
+<!--      }-->
+<!--    .titleStle{-->
+<!--        color: white;height: 4px-->
+
+<!--    }-->
+<!--    .theader{-->
+<!--        background-color: #12407a;-->
+<!--        line-height: 12px-->
+<!--    }-->
+
+
+<!--</style>-->
+
+<!--<div  style="font-family: Tahoma;direction: ltr;">-->
+<!--    <div class="col-lg-12 col-sm-12 col-md-12 mt-1 headerStyle" style="text-align: right;padding: 11px">-->
+<!--        <h5  style="font-weight: 400;" class="titleStle"  > مشخصات بیمار</h5>-->
+
+<!--    </div>-->
+<!--    <div style="display: flex " >-->
+
+<!--        <div class="col-lg-12 col-sm-12 col-md-12  border" style="font-size: 17px; border-color: black;display: flex;padding:0 ">-->
+<!--        -->
+<!--            <div *ngIf="config ==='Rayavaran'" class="col-lg-5 col-sm-12 col-md-12">-->
+<!--                <div class="form-group" *ngIf="visibility===true">-->
+<!--                    <ul class="d-flex  " style="margin-top: 4px;" >-->
+<!--                        <li *ngIf="list">-->
+<!--                            <select  #mySelect class="form-control"  (change)='getID(mySelect.value)' style="width: 300px" name="id">-->
+<!--                                <option value="">{{defultdrugstore}}</option>-->
+<!--                                <option *ngFor="let i of list"  [value]="i.id" >{{i.name}}</option>-->
+<!--                            </select>-->
+<!--                        </li>-->
+<!--                        <li>: داروخانه</li>-->
+<!--                    </ul>-->
+<!--                </div>-->
+<!--            </div>-->
+<!--            <div class="col-lg-3 col-sm-12 col-md-12">-->
+<!--                <button class="btn  mt-2 text-bold-700  " *ngIf="visibility===true" style="padding:3px!important;height:40px;color: white!important;-->
+<!--                background-color:#f2911b!important; font-size: 18px"  (click)="newPres()" >ثبت نسخه جدید بیمار</button>-->
+<!--            </div>-->
+<!--            <div class="col-lg-4 col-sm-12 col-md-12" style="text-align: right;font-weight: 700" >-->
+<!--                <ul *ngIf="customerobj" class="d-flex  mt-2 " >-->
+<!--                    <li style="margin-right: 0px;">{{customerobj['encounter_Age']}}  </li>-->
+<!--                    <li>|</li>-->
+<!--                    <li style="margin-right: 2px;">{{customerobj['patient_Gender']}}</li>-->
+<!--                    <li>|</li>-->
+<!--                    <li style="margin-right: 3px;">{{customerobj['patient_FirstName']+" "+customerobj['patient_LastName']}}</li>-->
+<!--                    -->
+<!--                </ul>-->
+<!--            </div>-->
+<!--    </div>-->
+
+
+<!--</div>-->
+
+<!--</div>-->
